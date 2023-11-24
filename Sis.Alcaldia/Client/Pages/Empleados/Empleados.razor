@@ -1,0 +1,199 @@
+﻿@page "/page/colaboradores"
+@attribute [Authorize(Roles = "Administrador")]
+
+@inject IColaboradoresServicio _empleadoServicio
+@inject IDialogService _dialogServicio
+@inject ISnackbar _snackBar
+@inject SweetAlertService Swal;
+@inject NavigationManager _navManager
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-5">
+
+    <MudText Typo="Typo.h5" GutterBottom="true">Colaboradores</MudText>
+
+    <MudPaper Elevation="3" Class="pa-4" Width="100%">
+        <MudGrid>
+            <MudItem xs="12">
+
+                <MudTable Items="@listaColaboradores"
+                          Dense="true"
+                          Striped="true" Bordered="true"
+                          Filter="new Func<ColaboradoresDTO,bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1"
+                          Loading="@_loading" LoadingProgressColor="Color.Info">
+                    <ToolBarContent>
+                        <MudTextField @bind-Value="searchString1" Placeholder="Buscar" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                        <MudSpacer />
+                        <MudButton Variant="Variant.Filled"
+                                   EndIcon="@Icons.Material.Filled.Add"
+                                   Color="Color.Success"
+                                   OnClick="AbrirNuevoUsuario">
+                            Agregar
+                        </MudButton>
+                    </ToolBarContent>
+                    <HeaderContent>
+                        <MudTh>Nombres</MudTh>
+                        <MudTh>CI</MudTh>
+                        <MudTh>Cargo</MudTh>
+                        <MudTh>Telefono</MudTh>
+                        <MudTh>Correo</MudTh>
+                        <MudTh>Estado</MudTh>
+                        <MudTh></MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="colaboradorRow">
+                        <MudTd DataLabel="Nombre Completo">@colaboradorRow.Nombre @colaboradorRow.Apellido</MudTd>
+                        <MudTd DataLabel="CI">@colaboradorRow.CI</MudTd>
+                        <MudTd DataLabel="Cargo">@colaboradorRow.Cargo</MudTd>
+                        <MudTd DataLabel="Telefono">@colaboradorRow.Telefono</MudTd>
+                        <MudTd DataLabel="Correo">@colaboradorRow.CorreoElectronico</MudTd>
+                        <MudTd DataLabel="EstadoEmpleado">
+                            @if (colaboradorRow.EstadoEmpleado != null)
+                            {
+                                @if (colaboradorRow.EstadoEmpleado.ToLower() == "prueba")
+                                {
+                                    <span scope="col" class="colortext-prueba">@colaboradorRow.EstadoEmpleado</span>
+                                }
+                                else if (colaboradorRow.EstadoEmpleado.ToLower() == "activo")
+                                {
+                                    <span scope="col" class="colortext-activo">@colaboradorRow.EstadoEmpleado</span>
+                                }
+                                else
+                                {
+                                    <span scope="col" class="colortext-inactivo">@colaboradorRow.EstadoEmpleado</span>
+                                }
+                            }
+                            else
+                            {
+                                <span scope="col" class="colortext-null">N/A</span>
+                            }
+                        </MudTd>
+
+                        <MudTd DataLabel="">
+                            <MudFab Color="Color.Primary"
+                                    StartIcon="@Icons.Material.Filled.Edit"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => AbrirEditarUsuario(colaboradorRow))" />
+                            <MudFab Color="Color.Warning"
+                                    StartIcon="@Icons.Material.Filled.RemoveRedEye"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => VerDetalle(colaboradorRow))" />
+                            <MudFab Color="Color.Error"
+                                    StartIcon="@Icons.Material.Filled.Delete"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => EliminarUsuario(colaboradorRow))" />
+                        </MudTd>
+                    </RowTemplate>
+                    <PagerContent>
+                        <MudTablePager />
+                    </PagerContent>
+                </MudTable>
+
+
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>
+@code {
+    List<ColaboradoresDTO> listaColaboradores = new List<ColaboradoresDTO>();
+    private string searchString1 = "";
+    private ColaboradoresDTO selectedItem1 = null;
+    private bool _loading = true;
+
+    private async Task ObtenerUsuarios()
+    {
+        var result = await _empleadoServicio.GetAllData();
+
+        if (result.status)
+        {
+            listaColaboradores = (List<ColaboradoresDTO>)result.value!;
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ObtenerUsuarios();
+        _loading = false;
+    }
+
+    private bool FilterFunc1(ColaboradoresDTO element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(ColaboradoresDTO element, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.Nombre.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.CorreoElectronico.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.Telefono.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.CI.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if ($"{element.Nombre} {element.CorreoElectronico} {element.Telefono} {element.CI}".Contains(searchString))
+            return true;
+
+        return false;
+    }
+
+    private async Task AbrirNuevoUsuario()
+    {
+        var dialogo = _dialogServicio.Show<MdEmpleados>(" Datos Del Colaborador");
+        var resultado = await dialogo.Result;
+
+        if (!resultado.Canceled)
+        {
+            await ObtenerUsuarios();
+        }
+    }
+
+    private async Task AbrirEditarUsuario(ColaboradoresDTO colaboradores)
+    {
+        var parametros = new DialogParameters { ["_colaboradores"] = colaboradores };
+
+        var dialogo = _dialogServicio.Show<MdEmpleados>("Editar Colaboradores", parametros);
+        var resultado = await dialogo.Result;
+        if (!resultado.Canceled)
+        {
+            await ObtenerUsuarios();
+        }
+    }
+
+    private async Task EliminarUsuario(ColaboradoresDTO colaboradores)
+    {
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Esta seguro?",
+                Text = $"Eliminar Colaborador: {colaboradores.Nombre}",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Si, eliminar",
+                CancelButtonText = "No, volver"
+            });
+
+        if (result.IsConfirmed)
+        {
+            var resultado = await _empleadoServicio.Eliminar(colaboradores.Idcolaborador);
+
+            if (resultado)
+            {
+                _snackBar.Add("El Colaborador fue eliminado", Severity.Success, a => a.VisibleStateDuration = 500);
+                await ObtenerUsuarios();
+            }
+            else
+                _snackBar.Add("No se pudo eliminar", Severity.Error, a => a.VisibleStateDuration = 500);
+        }
+    }
+
+    private async Task VerDetalle(ColaboradoresDTO modelo)
+    {
+        
+        _navManager.NavigateTo($"/page/facturas/{modelo.Idcolaborador}");
+
+    }
+
+
+
+
+}

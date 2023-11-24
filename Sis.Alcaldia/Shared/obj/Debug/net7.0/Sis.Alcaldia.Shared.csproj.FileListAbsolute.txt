@@ -1,0 +1,12 @@
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\bin\Debug\net7.0\Sis.Alcaldia.Shared.deps.json
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\bin\Debug\net7.0\Sis.Alcaldia.Shared.dll
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\bin\Debug\net7.0\Sis.Alcaldia.Shared.pdb
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.csproj.AssemblyReference.cache
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.AssemblyInfoInputs.cache
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.AssemblyInfo.cs
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.csproj.CoreCompileInputs.cache
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.dll
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\refint\Sis.Alcaldia.Shared.dll
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\Sis.Alcaldia.Shared.pdb
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Shared\obj\Debug\net7.0\ref\Sis.Alcaldia.Shared.dll

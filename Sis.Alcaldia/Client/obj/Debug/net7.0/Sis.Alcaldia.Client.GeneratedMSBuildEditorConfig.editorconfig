@@ -1,0 +1,157 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Sis.Alcaldia.Client
+build_property.RootNamespace = Sis.Alcaldia.Client
+build_property.ProjectDir = C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Client\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Categoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Cliente.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/ConfigContabilidad/MdConfigCont/MdConfigContabilidad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udGFiaWxpZGFkXE1kQ29uZmlnQ29udFxNZENvbmZpZ0NvbnRhYmlsaWRhZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Detalle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV0YWxsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/DetalleSalida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV0YWxsZVNhbGlkYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/MdEmpleado/MdColFactura.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXE1kRW1wbGVhZG9cTWRDb2xGYWN0dXJhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/MdEmpleado/MdEmpleados.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXE1kRW1wbGVhZG9cTWRFbXBsZWFkb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/MdEmpleado/MdPagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXE1kRW1wbGVhZG9cTWRQYWdvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Habitacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGFiaXRhY2lvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRDYXRlZ29yaWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdCliente.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRDbGllbnRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdClientes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRDbGllbnRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdHabitacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRIYWJpdGFjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdPiso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRQaXNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Modal/MdUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxcTWRVc3VhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Piso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGlzby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Recepcion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZXBjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Reporte.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Salida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsaWRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Usuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/ConfigContabilidad/ConfigContab.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlnQ29udGFiaWxpZGFkXENvbmZpZ0NvbnRhYi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-sjs83sudlg
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/ColFacturas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXENvbEZhY3R1cmFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-fywrzbrh6o
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/DetPagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXERldFBhZ29zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-lg1l1vgeer
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/Empleados.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEVtcGxlYWRvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ri0mf0hnrb
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-t5kf8a7lbe
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-2bs78ytdoh

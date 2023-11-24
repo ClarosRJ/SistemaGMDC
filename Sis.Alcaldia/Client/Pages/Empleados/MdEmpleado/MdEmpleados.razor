@@ -1,0 +1,181 @@
+﻿@inject IColaboradoresServicio _empleadoServicio
+@inject ISnackbar _snackBar
+
+<MudDialog Style="max-width:60%; ">
+    <DialogContent>
+        <MudContainer Style="max-height: 700px; " Class="m-0 p-0">
+            <EditForm Model="@_colaboradores">
+                  <div class="row">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-3">
+                        <MudDatePicker Class="d-flex align-center justify-center mud-width-full py-0"
+                                       Label="Fec.Nacimiento" PickerVariant="PickerVariant.Dialog" Adornment="Adornment.End" DisableToolbar="true"
+                                       Variant="Variant.Outlined" DateFormat="dd/MM/yyyy" @bind-Date="@_colaboradores.FechaNacimiento" />
+                    </div>
+                    <div class="col-md-3">
+                        <MudDatePicker Class="d-flex align-center justify-center mud-width-full py-0"
+                                       Label="Fec.Contratacion" PickerVariant="PickerVariant.Dialog" Adornment="Adornment.End" DisableToolbar="true"
+                                       Variant="Variant.Outlined" DateFormat="dd/MM/yyyy" @bind-Date="@_colaboradores.FechaContratacion" Disabled="true" />
+                    </div>
+                     <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                     @*Segunda Fila*@
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.Nombre" Style="width: 100%;" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="Nombres" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                      For="@(() => _colaboradores.Nombre)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.Apellido" Style="width: 100%;" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="Apellidos" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                      For="@(() => _colaboradores.Apellido)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudNumericField @bind-Value="@_colaboradores.CI" Class="d-flex align-center justify-center mud-width-full py-0"
+                                         Label="C.I." Variant="Variant.Outlined" Adornment="Adornment.End"
+                                         For="@(() => _colaboradores.CI)" />
+                    </div>
+                    @*Tercera Fila*@
+                    <div class="col-md-4">
+                        <MudNumericField @bind-Value="@_colaboradores.Telefono" Class="d-flex align-center justify-center mud-width-full py-0"
+                                         Label="Telefono" Variant="Variant.Outlined" Adornment="Adornment.End"
+                                         For="@(() => _colaboradores.Telefono)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.CorreoElectronico" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="CorreoElectronico" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Email"
+                                      For="@(() => _colaboradores.CorreoElectronico)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.Nit" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="NIT. " Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Dataset"
+                                      For="@(() => _colaboradores.Nit)" />
+                    </div>
+                    @*Cuarta Fila*@
+                    <div class="col-md-4">
+                        <MudSelect @bind-Value="@_colaboradores.Genero"
+                                   Class="d-flex align-center justify-center mud-width-full py-0"
+                                   Label="Genero"
+                                   Margin="Margin.Dense"
+                                   T="string"
+                                   Variant="Variant.Outlined">
+                            <MudSelectItem Value="@("Femenino")" />
+                            <MudSelectItem Value="@("Masculino")" />
+                            <MudSelectItem Value="@("Otros")" />
+                        </MudSelect>
+                    </div>
+                    <div class="col-md-4">
+
+                        <MudSelect @bind-Value="@_colaboradores.EstadoCivil"
+                                   Class="d-flex align-center justify-center mud-width-full py-0"
+                                   Label="Estado Civil"
+                                   Margin="Margin.Dense"
+                                   T="string"
+                                   Variant="Variant.Outlined">
+                            <MudSelectItem Value="@("Soltero")" />
+                            <MudSelectItem Value="@("Casado")" />
+                            <MudSelectItem Value="@("Divorciado")" />
+                        </MudSelect>
+                    </div>
+                    <div class="col-md-4">
+                        <MudSelect @bind-Value="@_colaboradores.EstadoEmpleado"
+                                   Class="d-flex align-center justify-center mud-width-full py-0"
+                                   Label="Estado Empleado"
+                                   Margin="Margin.Dense"
+                                   T="string"
+                                   Variant="Variant.Outlined">
+                            <MudSelectItem Value="@("Activo")" />
+                            <MudSelectItem Value="@("Prueba")" />
+                            <MudSelectItem Value="@("Inactivo")" />
+                        </MudSelect>
+                    </div>
+                    @*Quinta Fila*@
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.Cargo" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="Cargo" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Dataset"
+                                      For="@(() => _colaboradores.Cargo)" />
+                    </div>
+                    <div class="col-md-4">
+                         <MudTextField @bind-Value="@_colaboradores.Departamento"  Class="d-flex align-center justify-center mud-width-full py-0"
+                                Label="Departamento" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                For="@(() => _colaboradores.Departamento)" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_colaboradores.Direccion" Class="d-flex align-center justify-center mud-width-full py-0"
+                                      Label="Direccion" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Map"
+                                      For="@(() => _colaboradores.Direccion)" />
+                    </div>
+                    
+                </div>
+            </EditForm>
+        </MudContainer>
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Guardar">Guardar</MudButton>
+    </DialogActions>
+</MudDialog>
+<style>
+    /* Estilo Global */
+    div {
+        padding-top: 2px; /* Ajusta el valor según tus necesidades */
+        padding-bottom: 2px; /* Ajusta el valor según tus necesidades */
+    }
+
+</style>
+@code {
+
+    [Parameter]
+    public ColaboradoresDTO _colaboradores { get; set; } = new ColaboradoresDTO();
+    bool isShow;
+
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+         _colaboradores.FechaContratacion = DateTime.Now;
+    }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(_colaboradores.Nombre) || string.IsNullOrWhiteSpace(_colaboradores.CorreoElectronico) || string.IsNullOrWhiteSpace(_colaboradores.CI))
+        {
+            return;
+        }
+
+        string _mensaje = "";
+        bool _resultado;
+
+        if (_colaboradores.Idcolaborador != 0)
+        {
+            _resultado = await _empleadoServicio.Editar(_colaboradores);
+            _mensaje = "Colaborador fue modificado";
+        }
+        else
+        {
+            var response = await _empleadoServicio.Crear(_colaboradores);
+            _resultado = response.status;
+            _mensaje = "Colaborador fue creado";
+        }
+
+        if (_resultado)
+        {
+            _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        else
+            _snackBar.Add("Error al guardar cambios", Severity.Error, a => a.VisibleStateDuration = 1000);
+
+    }
+}

@@ -1,0 +1,253 @@
+﻿@page "/page/facturas/{IdCol:int}"
+@attribute [Authorize(Roles = "Administrador")]
+@using Sis.Alcaldia.Client.Pages.Empleados.MdEmpleado
+@inject IColaboradoresServicio _empleadoServicio
+@inject IDialogService _dialogServicio
+@inject ISnackbar _snackBar
+@inject SweetAlertService Swal;
+@inject NavigationManager _navManager
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-5">
+
+    <MudText Typo="Typo.h5" GutterBottom="true">Lista De Facturas del colaborador</MudText>
+
+    <MudPaper Elevation="3" Class="pa-4" Width="100%">
+        <MudGrid>
+           
+            <MudPaper Elevation="3" Class="pa-4" Width="100%">
+                <MudItem xs="12">
+                @if (listaColaboradores.Count > 0)
+                {
+                    var primerColaborador = listaColaboradores[0];  
+                        <div class="container-fluid btn-group p-0 m-0">
+                            <div class="col-3">
+                                <div class="d-flex col-12 justify-content-center align-items-center" style="height: 100%;">
+                                    <div class="form-group text-center">
+                                        <img id="PreviewPhoto" src="images/alcaldia.jpg" alt="Logo Image" class="img-fluid" style="max-width: 100%; max-height: 90%; border: 1px; margin-top: 0px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="control-label">&nbsp;&nbsp; <b> Nombre: </b> &nbsp;&nbsp; @primerColaborador.Nombre @primerColaborador.Apellido</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="control-label"> <b> Dirección: </b> &nbsp;&nbsp; Bolivia - Santa Cruz - Comarapa</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="control-label">&nbsp;&nbsp; <b> NIT: </b> &nbsp;&nbsp; @primerColaborador.Nit</label>
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="control-label"><b> Fecha Contratación: </b> &nbsp;&nbsp; @primerColaborador.FechaContratacion.Value.ToString("dd/MM/yyyy")</label>
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                }
+                else
+                {
+                    <MudText Typo="Typo.body1" Class="mb-2">No hay colaboradores en la lista.</MudText>
+                }
+            </MudItem>
+            </MudPaper>
+            
+            <MudItem xs="12">
+                <MudTable Items="@listaFacturas"
+                          Dense="true"
+                          Striped="true" Bordered="true"
+                          Filter="new Func<FacturasDTO,bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1"
+                          Loading="@_loading" LoadingProgressColor="Color.Info">
+                    <ToolBarContent>
+                        <MudTextField @bind-Value="searchString1" Placeholder="Buscar" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                        <MudSpacer />
+                        <MudButton Variant="Variant.Filled"
+                                   EndIcon="@Icons.Material.Filled.Add"
+                                   Color="Color.Success"
+                                   OnClick="AbrirNuevoUsuario">
+                            Agregar
+                        </MudButton>
+                    </ToolBarContent>
+                    <HeaderContent>
+                        <MudTh>#</MudTh>
+                        <MudTh>Numero Factura</MudTh>
+                        <MudTh>Estado de Pago</MudTh>
+                        <MudTh>Fecha Emision</MudTh>
+                        <MudTh>Monto</MudTh>
+                        <MudTh></MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="facturasRow">
+                        <MudTd DataLabel="Numero">@facturasRow.Idfactura</MudTd>
+                        <MudTd DataLabel="Numero Factura">@facturasRow.NumeroFactura</MudTd>
+                        <MudTd DataLabel="EstadoPago">
+                            @if (facturasRow.EstadoPago.ToLower() == "pagada")
+							{
+                                <span scope="col" class="colortext-pagada">@facturasRow.EstadoPago</span>
+                            }
+                            else if (facturasRow.EstadoPago.ToLower() == "pendiente")
+							{
+                                <span scope="col" class="colortext-pendiente">@facturasRow.EstadoPago</span>
+                            }
+                        </MudTd>
+                        <MudTd DataLabel="Fecha Emision">@facturasRow.FechaEmision.Value.ToString("dd/MM/yyyy")</MudTd>
+                        <MudTd DataLabel="Monto">@facturasRow.Monto .Bs</MudTd>
+                        
+                        <MudTd DataLabel="">
+                            <MudFab Color="Color.Primary"
+                                    StartIcon="@Icons.Material.Filled.Edit"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => AbrirEditarUsuario(facturasRow))" />
+                            <MudFab Color="Color.Success"
+                                    StartIcon="@Icons.Material.Filled.Print"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => Imprimir(facturasRow))" />
+                            <MudFab Color="Color.Warning"
+                                    StartIcon="@Icons.Material.Filled.RemoveRedEye"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => VerFacturaDet(facturasRow))" />
+                            <MudFab Color="Color.Error"
+                                    StartIcon="@Icons.Material.Filled.Delete"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => EliminarUsuario(facturasRow))" />
+                        </MudTd>
+                    </RowTemplate>
+                    <PagerContent>
+                        <MudTablePager />
+                    </PagerContent>
+                </MudTable>
+
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>
+@code {
+    [Parameter]
+    public int IdCol { get; set; }
+    List<ColaboradoresDTO> listaColaboradores = new List<ColaboradoresDTO>();
+    private string searchString1 = "";
+    private FacturasDTO selectedItem1 = null;
+    private bool _loading = true;
+
+    List<FacturasDTO> listaFacturas = new List<FacturasDTO>();
+
+    private async Task ObtenerFacturasId()
+    {
+        var nuevasFacturas = new List<FacturasDTO>();
+
+        var response = await _empleadoServicio.GetColFac(IdCol);
+        if (response.status)
+        {
+            listaColaboradores = (List<ColaboradoresDTO>)response.value!;
+
+            foreach (var colaborador in listaColaboradores)
+            {
+                nuevasFacturas.AddRange(colaborador.Facturas);
+            }
+            listaFacturas = nuevasFacturas;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ObtenerFacturasId();
+        _loading = false;
+    }
+    private bool FilterFunc1(FacturasDTO element) => FilterFunc(element, searchString1);
+    private bool FilterFunc(FacturasDTO element, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.Idcolaborador.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.NumeroFactura.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.EstadoPago.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if ($"{element.Idcolaborador} {element.NumeroFactura} {element.EstadoPago}".Contains(searchString))
+            return true;
+
+        return false;
+    }
+    private async Task AbrirNuevoUsuario()
+    {
+        var parameters = new DialogParameters { ["IdCol"] = IdCol };
+        var dialogo = _dialogServicio.Show<MdColFactura>("Nuevo Colaborador", parameters);
+        var resultado = await dialogo.Result;
+
+        if (!resultado.Canceled)
+        {
+            await ObtenerFacturasId();
+        }
+    }
+    private async Task AbrirEditarUsuario(FacturasDTO facturas)
+    {
+        var parametros = new DialogParameters { ["_facturas"] = facturas, ["IdCol"] = IdCol };
+
+        var dialogo = _dialogServicio.Show<MdColFactura>("Editar Factura", parametros);
+        var resultado = await dialogo.Result;
+        if (!resultado.Canceled)
+        {
+            await ObtenerFacturasId();
+        }
+    }
+    private async Task EliminarUsuario(FacturasDTO facturas)
+    {
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Esta seguro?",
+                Text = $"Eliminar Factura: {facturas.NumeroFactura}",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Si, eliminar",
+                CancelButtonText = "No, volver"
+            });
+
+        if (result.IsConfirmed)
+        {
+            var resultado = await _empleadoServicio.EliminarFacturas(facturas.Idfactura);
+
+            if (resultado)
+            {
+                _snackBar.Add("La Factura fue eliminada", Severity.Success, a => a.VisibleStateDuration = 500);
+                await ObtenerFacturasId();
+            }
+            else
+                _snackBar.Add("No se pudo eliminar", Severity.Error, a => a.VisibleStateDuration = 500);
+        }
+
+    }
+    private async Task Imprimir(FacturasDTO modelo)
+    {
+        //_navManager.NavigateTo($"/page/facturasdet/{modelo.Idcolaborador}");
+    }
+    private async Task VerFacturaDet(FacturasDTO modelo)
+    {
+        
+        _navManager.NavigateTo($"/page/facturasdet/{IdCol}/{modelo.Idfactura}");
+
+    }
+}

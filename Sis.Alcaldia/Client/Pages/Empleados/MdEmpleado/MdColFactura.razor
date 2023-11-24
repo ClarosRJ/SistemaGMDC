@@ -1,0 +1,223 @@
+﻿@inject IColaboradoresServicio _empleadoServicio
+@inject ISnackbar _snackBar
+
+<MudDialog Style="max-width:60%; ">
+    <DialogContent>
+        <MudContainer Style="max-height: 500px; overflow-y: scroll" Class="m-0 p-0">
+            <EditForm Model="@_facturas">
+                 <div class="row">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-3">
+                        <MudDatePicker Class="mb-3"
+                                       Label="Fecha Emision" PickerVariant="PickerVariant.Dialog" Adornment="Adornment.End" DisableToolbar="true"
+                                       Variant="Variant.Outlined" DateFormat="dd/MM/yyyy" @bind-Date="@_facturas.FechaEmision" Disabled="true" />
+                    </div>
+                    <div class="col-md-3">
+                        <MudDatePicker Class="mb-3"
+                                       Label="Fecha Vencimiento" PickerVariant="PickerVariant.Dialog" Adornment="Adornment.End" DisableToolbar="true"
+                                       Variant="Variant.Outlined" DateFormat="dd/MM/yyyy" @bind-Date="@_facturas.FechaVencimiento" Disabled="true" />
+                    </div>
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+
+                     <div class="col-md-4">
+                        <MudDatePicker Class="mb-3"
+                                       Label="Pago del Mes" PickerVariant="PickerVariant.Dialog" Adornment="Adornment.End" DisableToolbar="true"
+                                       Variant="Variant.Outlined" DateFormat="MMMM" @bind-Date="@_pagos.FechaPago" />
+                    </div>
+                     <div class="col-md-4">
+                        <MudNumericField @bind-Value="@_facturas.Monto" Class="mb-3"
+                                         Label="Monto" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                         For="@(() => _facturas.Monto)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudTextField @bind-Value="@_facturas.Concepto" Class="mb-3"
+                                      Label="Concepto" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                      For="@(() => _facturas.Concepto)" />
+                    </div>
+                      <div class="col-md-4">
+                        <MudNumericField @bind-Value="@_pagos.Bonos" Class="mb-3"
+                                         Label="Bonos" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                         For="@(() => _pagos.Bonos)" />
+                    </div>
+                    <div class="col-md-4">
+                        <MudNumericField @bind-Value="@_pagos.Descuentos" Class="mb-3"
+                                         Label="Descuento" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                                         For="@(() => _pagos.Descuentos)" />
+                    </div>
+                    <div class="col-md-6">
+
+                        <MudSelect @bind-Value="@_facturas.EstadoPago"
+                                   Class="mb-3"
+                                   Label="Estado Pago"
+                                   Margin="Margin.Dense"
+                                   T="string"
+                                   Variant="Variant.Outlined">
+                            <MudSelectItem Value="@("Pagada")" />
+                            <MudSelectItem Value="@("Pendiente")" />
+                        </MudSelect>
+                    </div>
+                  
+                    <div class="col-md-6">
+                        <MudSelect @bind-Value="@_pagos.MetodoPago"
+                                   Class="mb-3"
+                                   Label="Metodo Pago"
+                                   Margin="Margin.Dense"
+                                   T="string"
+                                   Variant="Variant.Outlined">
+                            <MudSelectItem Value="@("Transferencia")" />
+                            <MudSelectItem Value="@("Cheque")" />
+                            <MudSelectItem Value="@("Efectivo")" />
+                        </MudSelect>
+                    </div>
+
+                    <h3>Detalle de Pago</h3>
+
+                    <div class="col-md-12">
+                        <MudTextField @bind-Value="@_pagos.Detalle"
+                        @ref="multilineReference"
+                                      T="string"
+                                      Label="Detalle"
+                                      Variant="Variant.Filled"
+                                      Text="@sampleText" Lines="3"
+                                      MaxLength="250"
+                                      Adornment="Adornment.End" OnAdornmentClick="@(() => multilineReference.FocusAsync())" />
+                    </div>
+                </div>
+            </EditForm>
+        </MudContainer>
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Guardar">Guardar</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter]
+    public int IdCol { get; set; }
+
+    [Parameter]
+    public FacturasDTO _facturas { get; set; } = new FacturasDTO();
+
+    bool isShow;
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    public PagosDTO _pagos { get; set; } = new PagosDTO();
+    public ConfigContabilidadDTO _contaconfig { get; set; } = new ConfigContabilidadDTO();
+    private MudTextField<string> multilineReference;
+
+
+    public string sampleText  = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPagos();
+
+    }
+    private async Task LoadPagos()
+    {
+        if (_facturas.Idfactura == 0)
+        {
+            _pagos.FechaPago = DateTime.Now;
+            _pagos.FechaPago.Value.ToString("MMMM").ToUpper();
+            _facturas.FechaVencimiento = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+            var mes = "";
+
+            mes = DateTime.Now.ToString("MMMM").ToUpper();
+            if (_pagos.Detalle == null)
+            {
+                _facturas.FechaEmision = DateTime.Now;
+                sampleText = "Pago referente al mes de " + mes;
+            }
+        }
+        else
+        {
+            var result = await _empleadoServicio.ListaPagos(_facturas.Idfactura);
+
+            if (result.status)
+            {
+                _pagos = (PagosDTO)result.value!;
+                sampleText = _pagos.Detalle;
+            }
+        }
+
+    }
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+    private void AgregarDetalle(PagosDTO pago)
+    {
+        _facturas.Pagos.Add(pago);
+    }
+    private async Task ConfigConta()
+    {
+        var result = await _empleadoServicio.ConfigConta();
+
+        if (result.status)
+        {
+
+            _contaconfig = (ConfigContabilidadDTO)result.value!;
+
+        }
+
+    }
+    private async Task Guardar()
+    {
+            await ConfigConta();
+        if (string.IsNullOrWhiteSpace(_facturas.Concepto) || string.IsNullOrWhiteSpace(_facturas.Monto.ToString()))
+            return;
+
+        string _mensaje = "";
+        bool _resultado;
+        _facturas.Idcolaborador = IdCol;
+        _facturas.Pagos = new List<PagosDTO>();
+        
+        AgregarDetalle(new PagosDTO()
+            {   Idfactura = _facturas.Idfactura,
+                FechaPago = _pagos.FechaPago,
+                MetodoPago = _pagos.MetodoPago,
+                MontoPago = _facturas.Monto,
+                Afp = _facturas.Monto * _contaconfig.Afp,
+                Rciva = _facturas.Monto * _contaconfig.Rciva,
+                Descuentos = _pagos.Descuentos,
+                Bonos = _pagos.Bonos,
+                SeguroM = _facturas.Monto * _contaconfig.Caja,
+                Total = _facturas.Monto - 
+                        _facturas.Monto * _contaconfig.Afp -
+                        _facturas.Monto * _contaconfig.Rciva -
+                        _facturas.Monto * _contaconfig.Caja -
+                        _pagos.Descuentos + 
+                        _pagos.Bonos,
+
+                Detalle = sampleText + ", pago realizado mediante " + _pagos.MetodoPago.ToUpper() + ", Estado del pago, '" + _facturas.EstadoPago.ToUpper() +"'"
+        });
+
+        if (_facturas.Idfactura != 0)
+        {
+            _resultado = await _empleadoServicio.EditarFacturas(_facturas);
+            _mensaje = "Factura fue modificado";
+        }
+        else
+        {
+            var response = await _empleadoServicio.CrearFacturas(_facturas);
+            _resultado = response.status;
+            _mensaje = "Factura fue creado";
+        }
+
+        if (_resultado)
+        {
+            _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        else
+            _snackBar.Add("Error al guardar cambios", Severity.Error, a => a.VisibleStateDuration = 1000);
+
+    }
+}

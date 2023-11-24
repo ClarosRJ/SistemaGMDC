@@ -1,0 +1,35 @@
+﻿.colorfont {
+    background-color: green;
+    color: white;
+}
+
+.text-pagos {
+    text-align: center;
+}
+
+.text-total {
+    font-size: 19px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    background-color: cornflowerblue;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+p {
+    margin: 0;
+}
+
+.dotted-line {
+    border-bottom: 1px dashed #000;
+    margin: 5px 0;
+}

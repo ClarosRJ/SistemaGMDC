@@ -1,0 +1,222 @@
+/* /Pages/ConfigContabilidad/ConfigContab.razor.rz.scp.css */
+
+
+.colortext-actual[b-sjs83sudlg] {
+    color: #00b636;
+}
+
+.colortext-nuevo[b-sjs83sudlg] {
+    color: #ffd800;
+}
+
+/* /Pages/Empleados/ColFacturas.razor.rz.scp.css */
+
+
+.colortext-pagada[b-fywrzbrh6o] {
+    color: #00b636;
+}
+
+.colortext-pendiente[b-fywrzbrh6o] {
+    color: #a30000;
+}
+/* /Pages/Empleados/DetPagos.razor.rz.scp.css */
+.colorfont[b-lg1l1vgeer] {
+    background-color: green;
+    color: white;
+}
+
+.text-pagos[b-lg1l1vgeer] {
+    text-align: center;
+}
+
+.text-total[b-lg1l1vgeer] {
+    font-size: 19px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    background-color: cornflowerblue;
+}
+
+table[b-lg1l1vgeer] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th[b-lg1l1vgeer], td[b-lg1l1vgeer] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+p[b-lg1l1vgeer] {
+    margin: 0;
+}
+
+.dotted-line[b-lg1l1vgeer] {
+    border-bottom: 1px dashed #000;
+    margin: 5px 0;
+}
+/* /Pages/Empleados/Empleados.razor.rz.scp.css */
+
+
+.colortext-prueba[b-ri0mf0hnrb] {
+    color: #ffd800;
+}
+
+.colortext-activo[b-ri0mf0hnrb] {
+    color: #00b636;
+}
+
+.colortext-inactivo[b-ri0mf0hnrb] {
+    color: #a30000;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-t5kf8a7lbe] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-t5kf8a7lbe] {
+    flex: 1;
+}
+
+.sidebar[b-t5kf8a7lbe] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-t5kf8a7lbe] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-t5kf8a7lbe]  a, .top-row[b-t5kf8a7lbe]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-t5kf8a7lbe]  a:hover, .top-row[b-t5kf8a7lbe]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-t5kf8a7lbe]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-t5kf8a7lbe] {
+        display: none;
+    }
+
+    .top-row.auth[b-t5kf8a7lbe] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-t5kf8a7lbe]  a, .top-row[b-t5kf8a7lbe]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-t5kf8a7lbe] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-t5kf8a7lbe] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-t5kf8a7lbe] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-t5kf8a7lbe]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-t5kf8a7lbe], article[b-t5kf8a7lbe] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-2bs78ytdoh] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-2bs78ytdoh] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-2bs78ytdoh] {
+    font-size: 1.1rem;
+}
+
+.oi[b-2bs78ytdoh] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-2bs78ytdoh] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-2bs78ytdoh] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-2bs78ytdoh] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-2bs78ytdoh]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-2bs78ytdoh]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-2bs78ytdoh]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-2bs78ytdoh] {
+        display: none;
+    }
+
+    .collapse[b-2bs78ytdoh] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-2bs78ytdoh] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}

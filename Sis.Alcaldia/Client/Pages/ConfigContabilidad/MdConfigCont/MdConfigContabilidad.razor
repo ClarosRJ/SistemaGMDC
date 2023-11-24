@@ -1,0 +1,101 @@
+﻿@inject IConfigContabilidadServicio _configContServicio 
+@inject ISnackbar _snackBar
+
+<MudDialog Style="width:400px">
+
+    <DialogContent>
+        <MudContainer Style="max-height: 500px; overflow-y: scroll" Class="m-0 p-0">
+
+            <EditForm Model="@_configconta">
+                
+                
+                <MudTextField @bind-Value="@_configconta.Gestion" Class="mb-3"
+                              Label="@labelContent" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.ViewTimeline"
+                              For="@(() => _configconta.Gestion)" />
+
+                <MudNumericField @bind-Value="@_configconta.Afp" Class="mb-3"
+                                 Label="Valor de Afp en(%)" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Analytics"
+                              For="@(() => _configconta.Afp)" />
+
+                <MudNumericField @bind-Value="@_configconta.Rciva" Class="mb-3"
+                    Label="Valor de Rciva en(%)" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge"
+                    For="@(() => _configconta.Afp)" />
+
+                <MudNumericField @bind-Value="@_configconta.Caja" Class="mb-3"
+                                 Label="Seguro en(%)" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Apartment"
+                                 For="@(() => _configconta.Afp)" />
+
+                <MudNumericField @bind-Value="@_configconta.SueldoBas" Class="mb-3"
+                                 Label="Sueldo Basico en Bs." Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CurrencyExchange"
+                                 For="@(() => _configconta.SueldoBas)" />
+                <MudTextField @bind-Value="@_configconta.DetConfig"
+                                  Class="mb-3"
+                                  T="string"
+                                  Label="Detalle"
+                                  Variant="Variant.Filled"
+                                  Lines="3"
+                                  Text="@_configconta.DetConfig"
+                                  MaxLength="250"
+                                  Adornment="Adornment.End"/>
+            </EditForm>
+
+        </MudContainer>
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Guardar">Guardar</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter]
+    public ConfigContabilidadDTO _configconta { get; set; } = new ConfigContabilidadDTO();
+
+    bool isShow;
+
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+    private string datenow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        datenow = DateTime.Now.Year.ToString();
+    }
+
+    private string labelContent => "Gestion Ejem. " + datenow;
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(_configconta.Afp.ToString()) || string.IsNullOrWhiteSpace(_configconta.Caja.ToString()) || string.IsNullOrWhiteSpace(_configconta.Gestion))
+            return;
+
+        string _mensaje = "";
+        bool _resultado;
+
+        if (_configconta.IdConfig != 0)
+        {
+            _resultado = await _configContServicio.Editar(_configconta);
+            _mensaje = "Configuración fue modificada";
+        }
+        else
+        {
+            var response = await _configContServicio.Crear(_configconta);
+            _resultado = response.status;
+            _mensaje = "Configuración fue creada";
+        }
+
+        if (_resultado)
+        {
+            _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        else
+            _snackBar.Add("Error al guardar cambios", Severity.Error, a => a.VisibleStateDuration = 1000);
+
+    }
+}

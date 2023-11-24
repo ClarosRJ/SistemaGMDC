@@ -1,0 +1,191 @@
+﻿@page "/page/configCont"
+@attribute [Authorize(Roles = "Administrador")]
+
+@inject IConfigContabilidadServicio _configContaServicio
+@inject IDialogService _dialogServicio
+@inject ISnackbar _snackBar
+@inject SweetAlertService Swal;
+@inject NavigationManager _navManager
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-5">
+
+    <MudText Typo="Typo.h5" GutterBottom="true">Configuracion Gestiones</MudText>
+
+    <MudPaper Elevation="3" Class="pa-4" Width="100%">
+        <MudGrid>
+            <MudItem xs="12">
+
+                <MudTable Items="@listaConfigConta"
+                          Dense="true"
+                          Striped="true" Bordered="true"
+                          Filter="new Func<ConfigContabilidadDTO,bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1"
+                          Loading="@_loading" LoadingProgressColor="Color.Info">
+                    <ToolBarContent>
+                        <MudTextField @bind-Value="searchString1" Placeholder="Buscar" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                        <MudSpacer />
+                        <MudButton Variant="Variant.Filled"
+                                   EndIcon="@Icons.Material.Filled.Add"
+                                   Color="Color.Success"
+                                   OnClick="AbrirNuevoUsuario">
+                            Agregar
+                        </MudButton>
+                    </ToolBarContent>
+                    <HeaderContent>
+                        <MudTh>#</MudTh>
+                        <MudTh>AFP (%)</MudTh>
+                        <MudTh>RCIVA (%)</MudTh>
+                        <MudTh>CAJA (%)</MudTh>
+                        <MudTh>Sueldo Bas.</MudTh>
+                        <MudTh>Gestion</MudTh>
+                        <MudTh></MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="configContRow">
+                        <MudTd DataLabel="Id">@configContRow.IdConfig</MudTd>
+                        <MudTd DataLabel="AFP">@configContRow.Afp%</MudTd>
+                        <MudTd DataLabel="Rciva">@configContRow.Rciva%</MudTd>
+                        <MudTd DataLabel="Caja">@configContRow.Caja%</MudTd>
+                        <MudTd DataLabel="Correo">@configContRow.SueldoBas</MudTd>
+                        <MudTd DataLabel="Gestion">
+                            @if (configContRow.Gestion != null)
+                            {
+                                @if (configContRow.Gestion == datenow)
+                                {
+                                    <span scope="col" class="colortext-actual">@configContRow.Gestion</span>
+                                }
+                                else if (configContRow.Gestion == datenew)
+                                {
+                                    <span scope="col" class="colortext-nuevo">@configContRow.Gestion</span>
+                                }
+                                else
+                                {
+                                    <span scope="col" class="colortext-null">@configContRow.Gestion</span>
+                                }
+                            }
+                            else
+                            {
+                                <span scope="col" class="colortext-null">N/A</span>
+                            }
+                        </MudTd>
+
+                        <MudTd DataLabel="">
+                            <MudFab Color="Color.Primary"
+                                    StartIcon="@Icons.Material.Filled.Edit"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => AbrirEditarUsuario(configContRow))" />
+                            <MudFab Color="Color.Error"
+                                    StartIcon="@Icons.Material.Filled.Delete"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    OnClick="@(() => EliminarUsuario(configContRow))" />
+                        </MudTd>
+                    </RowTemplate>
+                    <PagerContent>
+                        <MudTablePager />
+                    </PagerContent>
+                </MudTable>
+
+
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>
+@code {
+    List<ConfigContabilidadDTO> listaConfigConta = new List<ConfigContabilidadDTO>();
+    private string searchString1 = "";
+    private ConfigContabilidadDTO selectedItem1 = null;
+    private bool _loading = true;
+
+    public List<ConfigContabilidadDTO> _contaconfig { get; set; } = new List<ConfigContabilidadDTO>();
+    public string datenow = DateTime.Now.Year.ToString(); 
+    public string datenew = (DateTime.Now.Year + 1).ToString();
+
+    private async Task ObtenerDatosConf()
+    {
+        var result = await _configContaServicio.GetAllData();
+
+        listaConfigConta = ((List<ConfigContabilidadDTO>)result.value!)
+                            .Select(config => new ConfigContabilidadDTO
+                                {
+                                    IdConfig = config.IdConfig,
+                                    Afp = (int)(config.Afp * 100),
+                                    Rciva = (int)(config.Rciva * 100),
+                                    Caja = (int)(config.Caja* 100),
+                                    SueldoBas = config.SueldoBas,
+                                    Gestion = config.Gestion
+                                    
+                                })
+                            .ToList();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await ObtenerDatosConf();
+        _loading = false;
+    }
+
+    private bool FilterFunc1(ConfigContabilidadDTO element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(ConfigContabilidadDTO element, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.Gestion.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (element.DetConfig.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        return false;
+    }
+
+    private async Task AbrirNuevoUsuario()
+    {
+        var dialogo = _dialogServicio.Show<MdConfigContabilidad>(" Agregar Nuevo");
+        var resultado = await dialogo.Result;
+
+        if (!resultado.Canceled)
+        {
+            await ObtenerDatosConf();
+        }
+    }
+
+    private async Task AbrirEditarUsuario(ConfigContabilidadDTO configContab)
+    {
+        var parametros = new DialogParameters { ["_configconta"] = configContab };
+
+        var dialogo = _dialogServicio.Show<MdConfigContabilidad>("Editar Gestion", parametros);
+        var resultado = await dialogo.Result;
+        if (!resultado.Canceled)
+        {
+            await ObtenerDatosConf();
+        }
+    }
+
+    private async Task EliminarUsuario(ConfigContabilidadDTO configContab)
+    {
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Esta seguro?",
+                Text = $"Eliminar Configuración del: {configContab.Gestion}",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Si, eliminar",
+                CancelButtonText = "No, volver"
+            });
+
+        if (result.IsConfirmed)
+        {
+            var resultado = await _configContaServicio.Eliminar(configContab.IdConfig);
+
+            if (resultado)
+            {
+                _snackBar.Add("La Configuración fue eliminado", Severity.Success, a => a.VisibleStateDuration = 500);
+                await ObtenerDatosConf();
+            }
+            else
+                _snackBar.Add("No se pudo eliminar", Severity.Error, a => a.VisibleStateDuration = 500);
+        }
+    }
+
+
+}

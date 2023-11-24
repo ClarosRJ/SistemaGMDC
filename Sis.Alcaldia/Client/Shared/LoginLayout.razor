@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+
+
+<MudThemeProvider />
+<MudSnackbarProvider />
+<div class="contenido">
+    <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 100vh;">
+        <div class="d-flex flex-column align-center mud-width-full">
+            <MudPaper Elevation="25" Class="pa-8" Width="100%" MaxWidth="400px">
+                @Body
+            </MudPaper>
+        </div>
+    </MudContainer>
+</div>
+<style>
+    .contenido {
+        background: url('images/comarapa.jpg') no-repeat center center;
+        background-size: 100% 100%;
+        margin: 0;
+        padding: 0;
+        height: 100vh; /* Esto asegura que la imagen cubra la pantalla completa */
+    }
+</style>
+@code {
+}

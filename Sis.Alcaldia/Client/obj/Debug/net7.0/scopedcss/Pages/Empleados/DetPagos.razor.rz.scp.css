@@ -1,0 +1,35 @@
+.colorfont[b-lg1l1vgeer] {
+    background-color: green;
+    color: white;
+}
+
+.text-pagos[b-lg1l1vgeer] {
+    text-align: center;
+}
+
+.text-total[b-lg1l1vgeer] {
+    font-size: 19px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    background-color: cornflowerblue;
+}
+
+table[b-lg1l1vgeer] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th[b-lg1l1vgeer], td[b-lg1l1vgeer] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+p[b-lg1l1vgeer] {
+    margin: 0;
+}
+
+.dotted-line[b-lg1l1vgeer] {
+    border-bottom: 1px dashed #000;
+    margin: 5px 0;
+}

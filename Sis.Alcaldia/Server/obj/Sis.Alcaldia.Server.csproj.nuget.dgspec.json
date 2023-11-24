@@ -1,0 +1,277 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\Sis.Alcaldia.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\Sis.Alcaldia.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\Sis.Alcaldia.Client.csproj",
+        "projectName": "Sis.Alcaldia.Client",
+        "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\Sis.Alcaldia.Client.csproj",
+        "packagesPath": "C:\\Users\\windo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\windo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\windo\\Desktop\\Cursos\\ProyectoSchool\\Sm.Ministerio\\Sm.Ministerio\\Server\\Telerik": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj": {
+                "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Blazored.SessionStorage": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.102.1, )"
+            },
+            "ClosedXML.Report": {
+              "target": "Package",
+              "version": "[0.2.8, )"
+            },
+            "CurrieTechnologies.Razor.SweetAlert2": {
+              "target": "Package",
+              "version": "[5.5.0, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.11.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[7.0.5, 7.0.5]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\Sis.Alcaldia.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\Sis.Alcaldia.Server.csproj",
+        "projectName": "Sis.Alcaldia.Server",
+        "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\Sis.Alcaldia.Server.csproj",
+        "packagesPath": "C:\\Users\\windo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\windo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Users\\windo\\Desktop\\Cursos\\ProyectoSchool\\Sm.Ministerio\\Sm.Ministerio\\Server\\Telerik": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\Sis.Alcaldia.Client.csproj": {
+                "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\Sis.Alcaldia.Client.csproj"
+              },
+              "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj": {
+                "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.Server": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj",
+        "projectName": "Sis.Alcaldia.Shared",
+        "projectPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\Sis.Alcaldia.Shared.csproj",
+        "packagesPath": "C:\\Users\\windo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\windo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\windo\\Desktop\\Cursos\\ProyectoSchool\\Sm.Ministerio\\Sm.Ministerio\\Server\\Telerik": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
