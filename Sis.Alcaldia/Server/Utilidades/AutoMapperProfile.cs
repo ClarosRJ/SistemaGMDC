@@ -33,15 +33,23 @@ namespace Sis.Alcaldia.Server.Utilidades
             #endregion RolColaboradores
 
             #region Usuario
-            CreateMap<Usuario, UsuarioDTO>();
-            CreateMap<UsuarioDTO, Usuario>()
-            .ForMember(destino =>
-                    destino.Estado,
-                    opt => opt.MapFrom(src => true)
-                ).ForMember(destino =>
-                    destino.IdRolUsuarioNavigation,
-                    opt => opt.Ignore()
-                );
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+            //CreateMap<UsuarioDTO, Usuario>()
+            //.ForMember(destino =>
+            //        destino.Estado,
+            //        opt => opt.MapFrom(src => true)
+            //    ).ForMember(destino =>
+            //        destino.IdRolUsuarioNavigation,
+            //        opt => opt.Ignore()
+            //    );
+            //CreateMap<UsuarioDTO, Usuario>()
+            //.ForMember(destino =>
+            //        destino.Estado,
+            //        opt => opt.MapFrom(src => true)
+            //    ).ForMember(destino =>
+            //        destino.IdRolUsuarioNavigation,
+            //        opt => opt.Ignore()
+            //    );
             #endregion Usuario
 
             #region Cliente

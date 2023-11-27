@@ -82,9 +82,17 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
             "MudBlazor": {
               "target": "Package",
               "version": "[6.11.0, )"
+            },
+            "MudBlazor.ThemeManager": {
+              "target": "Package",
+              "version": "[1.0.8, )"
             }
           },
           "imports": [

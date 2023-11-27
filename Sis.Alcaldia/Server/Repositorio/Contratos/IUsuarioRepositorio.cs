@@ -11,5 +11,7 @@ namespace Sis.Alcaldia.Server.Repositorio.Contratos
         Task<bool> Editar(Usuario entidad);
         Task<bool> Eliminar(Usuario entidad);
         Task<IQueryable<Usuario>> Consultar(Expression<Func<Usuario, bool>> filtro = null);
+
+        Task<Usuario> TraerUser(string username, string correo);
     }
 }

@@ -17,6 +17,10 @@
                               Label="Correo" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Email"
                               For="@(() => _usuario.Correo)" />
 
+                <MudTextField @bind-Value="@_usuario.Telefono" Class="mb-3"
+                              Label="Telefono" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Email"
+                              For="@(() => _usuario.Telefono)" />
+
                 <MudSelect Label="Rol" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Class="mb-3"
                            @bind-Value="rolSeleccionado">
                     @if (listaRoles.Any())
@@ -26,6 +30,15 @@
                             <MudSelectItem Value="@rol">@rol.Descripcion</MudSelectItem>
                         }
                     }
+                </MudSelect>
+
+                <MudSelect @bind-Value="_usuario.Estado"
+                    Label="Estado" 
+                    Variant="Variant.Outlined"
+                    AnchorOrigin="Origin.BottomCenter" Class="mb-3"
+                    T="string">
+                    <MudSelectItem Value="@("Activo")" />
+                    <MudSelectItem Value="@("Inactivo")" />
                 </MudSelect>
 
                 <MudTextField @bind-Value="@_usuario.Clave" Label="Contraseña" Variant="Variant.Outlined" Class="mb-3"
@@ -98,6 +111,7 @@
     {
         MudDialog.Cancel();
     }
+
     private async Task Guardar()
     {
         if (string.IsNullOrWhiteSpace(_usuario.NombreCompleto) || string.IsNullOrWhiteSpace(_usuario.Correo) || string.IsNullOrWhiteSpace(_usuario.Clave))

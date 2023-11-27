@@ -7,40 +7,148 @@
 @using System.Security.Claims;
 @inject AuthenticationStateProvider autenticacionProvider
 
+@inject IUsuarioServicio _usuarioServicio
+@inject IDialogService _dialogServicio
 
-<MudSnackbarProvider />
-<MudThemeProvider />
+<MudThemeProvider Theme="_themeManager.Theme" />
+@*<MudThemeProvider />*@
 <MudDialogProvider DisableBackdropClick="true"
                    Position="DialogPosition.Center" />
 <MudSnackbarProvider />
+<MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="0">
+    <MudAppBar Elevation="_themeManager.AppBarElevation">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudSpacer />
         <AuthorizeView>
             <Authorized>
-                <MudText>@context.User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault()</MudText>
+
+                <MudGrid Class="justify-end">
+                    <MudItem xs="0" Class="align-right">
+                        <div Class="d-flex justify-space-around flex-wrap mt-4">
+                            <MudBadge Content="100" Color="Color.Success" Overlap="true" Class="mx-4 my-4">
+                                <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+                            </MudBadge>
+                            <MudBadge Content="10" Color="Color.Warning" Overlap="true" Class="mx-4 my-4">
+                                <MudIcon Icon="@Icons.Material.Filled.Notifications" Color="Color.Default" />
+                            </MudBadge>
+                            <MudBadge Content="5" Color="Color.Error" Overlap="true" Class="mx-4 my-4">
+                                <MudIcon Icon="@Icons.Material.Filled.Flag" Color="Color.Default" />
+                            </MudBadge>
+                            @*<MudBadge Origin="@AnchorOrigin" Color="Color.Primary" Icon="@GetIcon()" Overlap="true" Elevation="4">*@
+                            <MudMenu Variant="Variant.Filled" AnchorOrigin="@AnchorOrigin" TransformOrigin="@TransformOrigin" Color="Color.Default" Size="Size.Large">
+                                <ActivatorContent>
+                                        <MudBadge Color="Color.Success" Overlap="true" Bordered="true" OnClick="ObtenerUsuarios">
+                                        <MudAvatar Image="@context.User.Claims.Where(c => c.Type == ClaimTypes.Actor).Select(c => c.Value).SingleOrDefault()" />
+                                        </MudBadge>
+                                        <MudText>&nbsp;&nbsp;</MudText>
+                                    <MudButton OnClick="ObtenerUsuarios" Style="padding-top: 8px;">@context.User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault()</MudButton>
+                                </ActivatorContent>
+                                <ChildContent>
+                                    <MudMenuItem Class="mud-list-item-text" OnClick="@(() => AbrirEditarUsuario(Usuarioitem))">Profile </MudMenuItem>
+                                    <MudMenuItem>Theme</MudMenuItem>
+                                    <MudMenuItem>Usage</MudMenuItem>
+                                    <MudMenuItem OnClick="CerrarSesion">Sign Out </MudMenuItem>
+                                </ChildContent>
+                            </MudMenu>
+                        </div>
+                        @*</MudBadge>*@
+                    </MudItem>
+                </MudGrid>
+              
+                  @*<MudText>@context.User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault()</MudText>*@
+
             </Authorized>
         </AuthorizeView>
-
-        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Inherit" OnClick="CerrarSesion" />
+        @*<MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Inherit" OnClick="CerrarSesion" />*@
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="_themeManager.DrawerClipMode" Elevation="_themeManager.DrawerElevation">
         <MudDrawerHeader>
             <MudText Typo="Typo.h6">
-                Alcaldia M.CPA
+                CPA
             </MudText>
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
+
     <MudMainContent>
             @Body
-    </MudMainContent>
-</MudLayout>
 
+    </MudMainContent>
+        <MudThemeManagerButton OnClick="@((e) => OpenThemeManager(true))" />
+    <div class="theme-manager-container">
+        <MudThemeManager Open="_themeManagerOpen" OpenChanged="OpenThemeManager" Theme="_themeManager" ThemeChanged="UpdateTheme"/>
+    </div>
+</MudLayout>
+<style>
+    .menuedit {
+        /*top: 63.75px;*/
+        width: 150px;
+    }
+    .mud-list-item-text {
+      width:140px;
+    }
+
+
+</style>
 
 @code {
+
+    private string _userEmail;
+    private string _username;
+    private string _clave;
+    UsuarioDTO Usuarioitem = new UsuarioDTO();
+    private async Task ActualizarEmail()
+    {
+        var authenticationState = await autenticacionProvider.GetAuthenticationStateAsync();
+        var user = authenticationState.User;
+        _username = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+        _userEmail = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        //_clave = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.)?.Value;
+    }
+    private async Task AbrirEditarUsuario(UsuarioDTO usuario)
+    {
+        var parametros = new DialogParameters { ["_usuario"] = usuario };
+
+        var dialogo = _dialogServicio.Show<Profile>("Perfil", parametros);
+        var resultado = await dialogo.Result;
+        if (!resultado.Canceled)
+        {
+            await ObtenerUsuarios();
+        }
+    }
+    private async Task ObtenerUsuarios()
+    {
+        await ActualizarEmail();
+        var result = await _usuarioServicio.UserEmailName(_username, _userEmail);
+        if (result.status)
+        {
+            Usuarioitem = (UsuarioDTO)result.value!;
+        }
+    }
+    //end edicion usuario id
+
+
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+    public bool _themeManagerOpen = false;
+
+    void OpenThemeManager(bool value)
+    {
+        _themeManagerOpen = value;
+    }
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
+
+    protected override  async void OnInitialized()
+    {
+        ObtenerUsuarios();
+        StateHasChanged();
+    }
+
     bool _drawerOpen = true;
 
     void DrawerToggle()
@@ -66,4 +174,55 @@
             _navigationManager.NavigateTo("/", true);
         }
     }
+
+    public Origin TransformOrigin { get; set; } = Origin.BottomRight;
+    public Origin AnchorOrigin { get; set; } = Origin.BottomRight;
+
+    public string GetIcon()
+    {
+        string icon = "";
+
+        switch (TransformOrigin)
+        {
+            case Origin.BottomRight:
+                icon = Icons.Material.Filled.NorthWest;
+                break;
+        }
+        return icon;
+    }
+
+    public string GetLocation()
+    {
+        string align = "";
+        string justify = "";
+        string[] pos = TransformOrigin.ToDescriptionString().Split("-");
+
+        if (pos[0] == "center")
+        {
+            align = "align-right";
+        }
+        else if (pos[0] == "top")
+        {
+            align = "align-right";
+        }
+        else if (pos[0] == "bottom")
+        {
+            align = "align-right";
+        }
+        if (pos[1] == "left")
+        {
+            justify = "justify-right";
+        }
+        else if (pos[1] == "right")
+        {
+            justify = "justify-right";
+        }
+        else if (pos[1] == "center")
+        {
+            justify = "justify-right";
+        }
+
+        return $"absolute mud-height-full mud-width-full d-flex ma-n3 {align} {justify}";
+    }
+
 }

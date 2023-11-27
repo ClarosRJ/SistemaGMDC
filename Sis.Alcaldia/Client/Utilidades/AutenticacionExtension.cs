@@ -25,7 +25,8 @@ namespace Sis.Alcaldia.Client.Utilidades
                 {
                     new Claim(ClaimTypes.Name,sesionUsuario.Nombre),
                     new Claim(ClaimTypes.Email,sesionUsuario.Correo),
-                    new Claim(ClaimTypes.Role,sesionUsuario.Rol)
+                    new Claim(ClaimTypes.Role,sesionUsuario.Rol),
+                    new Claim(ClaimTypes.Actor,sesionUsuario.Actor)
                 }, "JwtAuth"));
 
                 await _sessionStorage.GuardarStorage("sesionUsuario", sesionUsuario);
@@ -53,7 +54,8 @@ namespace Sis.Alcaldia.Client.Utilidades
                 {
                     new Claim(ClaimTypes.Name,sesionUsuario.Nombre),
                     new Claim(ClaimTypes.Email,sesionUsuario.Correo),
-                    new Claim(ClaimTypes.Role,sesionUsuario.Rol)
+                    new Claim(ClaimTypes.Role,sesionUsuario.Rol),
+                    new Claim(ClaimTypes.Actor,sesionUsuario.Actor)
                 }, "JwtAuth"));
 
 

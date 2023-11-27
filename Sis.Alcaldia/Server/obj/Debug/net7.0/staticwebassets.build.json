@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XuNODURvApjU2BImIanFrUhzLxzmV1ajcdMkWS6Uxec=",
+  "Hash": "HMBY1jFARnZbLVvqTd8Abdvj/chu1WMqwie6jUsB1Bk=",
   "Source": "Sis.Alcaldia.Server",
   "BasePath": "_content/Sis.Alcaldia.Server",
   "Mode": "Default",
@@ -24,6 +24,13 @@
       "Source": "Sis.Alcaldia.Client",
       "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\wwwroot\\",
       "BasePath": "/",
+      "Pattern": "**"
+    },
+    {
+      "Name": "Sis.Alcaldia.Server\\wwwroot",
+      "Source": "Sis.Alcaldia.Server",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\",
+      "BasePath": "_content/Sis.Alcaldia.Server",
       "Pattern": "**"
     }
   ],
@@ -607,6 +614,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\currietechnologies.razor.sweetalert2\\5.5.0\\staticwebassets\\wordpressAdminTheme.min.js"
     },
     {
+      "Identity": "C:\\Users\\windo\\.nuget\\packages\\mudblazor.thememanager\\1.0.8\\staticwebassets\\MudBlazorThemeManager.css",
+      "SourceId": "MudBlazor.ThemeManager",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\windo\\.nuget\\packages\\mudblazor.thememanager\\1.0.8\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor.ThemeManager",
+      "RelativePath": "MudBlazorThemeManager.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\mudblazor.thememanager\\1.0.8\\staticwebassets\\MudBlazorThemeManager.css"
+    },
+    {
       "Identity": "C:\\Users\\windo\\.nuget\\packages\\mudblazor\\6.11.0\\staticwebassets\\MudBlazor.min.css",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
@@ -1015,6 +1039,57 @@
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.5\\lib\\net7.0\\Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Abstractions.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Features.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Features.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -1030,6 +1105,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Metadata.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.WebUtilities.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.CSharp.dll",
@@ -1287,6 +1379,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.ObjectPool.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\lib\\netstandard2.0\\Microsoft.Extensions.ObjectPool.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.dll",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -1353,6 +1462,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.5\\lib\\net7.0\\Microsoft.JSInterop.WebAssembly.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\lib\\netstandard2.0\\Microsoft.Net.Http.Headers.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.VisualBasic.Core.dll",
@@ -1472,6 +1598,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\mudblazor\\6.11.0\\lib\\net7.0\\MudBlazor.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.ThemeManager.dll",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MudBlazor.ThemeManager.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\.nuget\\packages\\mudblazor.thememanager\\1.0.8\\lib\\net6.0\\MudBlazor.ThemeManager.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\netstandard.dll",
@@ -4636,6 +4779,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ObjectModel.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\1zVOJ+HZ.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\2bdiLbdJ.gz",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -4685,6 +4845,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MoreLinq.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\2GEFR6bw.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\2mrFux06.gz",
@@ -6132,6 +6309,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.Handles.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\HI+zu0fT.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\hJ+5xGUx.gz",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -6147,6 +6341,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Xml.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\hZIAYwjy.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\i+mulGUu.gz",
@@ -6472,6 +6683,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Threading.ThreadPool.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\koXHUDnR.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MudBlazor.ThemeManager.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.ThemeManager.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MudBlazor.ThemeManager.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\l2l8xK7z.gz",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -6727,6 +6955,23 @@
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.InteropServices.RuntimeInformation.dll"
     },
     {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\N9OQ5cJV.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll"
+    },
+    {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\NaHbHsSz.gz",
       "SourceId": "Sis.Alcaldia.Client",
       "SourceType": "Project",
@@ -6963,6 +7208,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Security.Cryptography.Cng.dll"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\p72kPf6w.gz",
+      "SourceId": "Sis.Alcaldia.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll"
     },
     {
       "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Client\\obj\\Debug\\net7.0\\build-gz\\pGwv078F.gz",
@@ -8425,6 +8687,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Utilidades.js"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231718_default.png",
+      "SourceId": "Sis.Alcaldia.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\",
+      "BasePath": "_content/Sis.Alcaldia.Server",
+      "RelativePath": "images/271120231718_default.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\271120231718_default.png"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231833_jhonny2.png",
+      "SourceId": "Sis.Alcaldia.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\",
+      "BasePath": "_content/Sis.Alcaldia.Server",
+      "RelativePath": "images/271120231833_jhonny2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\271120231833_jhonny2.png"
+    },
+    {
+      "Identity": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231835_El Comarapeño.png",
+      "SourceId": "Sis.Alcaldia.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\",
+      "BasePath": "_content/Sis.Alcaldia.Server",
+      "RelativePath": "images/271120231835_El Comarapeño.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\271120231835_El Comarapeño.png"
     }
   ]
 }

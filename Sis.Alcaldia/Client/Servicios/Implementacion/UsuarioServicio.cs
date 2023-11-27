@@ -1,4 +1,5 @@
 ﻿using Sis.Alcaldia.Client.Servicios.Contratos;
+using Sis.Alcaldia.Shared.BaseModels;
 using Sis.Alcaldia.Shared.Models;
 using System.Net.Http.Json;
 
@@ -44,5 +45,16 @@ namespace Sis.Alcaldia.Client.Servicios.Implementacion
             var result = await _http.GetFromJsonAsync<ResponseDTO<List<UsuarioDTO>>>("api/usuario/Lista");
             return result!;
         }
+        //usuarioeditprofile
+        public async Task<ResponseDTO<UsuarioDTO>> UserEmailName(string username, string correo)
+        {
+            var result = await _http.GetFromJsonAsync<ResponseDTO<UsuarioDTO>>($"api/usuario/UserEmailName/{username}/{correo}");
+            return result!;
+        }
+        public async Task SaveToServer(SaveFileDTO saveFile)
+        {
+            await _http.PostAsJsonAsync("/api/usuario/save-file-to-physicallocation", saveFile);
+        }
+      
     }
 }

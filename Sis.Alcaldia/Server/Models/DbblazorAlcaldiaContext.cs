@@ -327,13 +327,23 @@ public partial class DbblazorAlcaldiaContext : DbContext
             entity.Property(e => e.Correo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Estado).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasDefaultValueSql("((1))");
             entity.Property(e => e.FechaCreacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.FileName)
+                .HasMaxLength(250)
+                .IsUnicode(false);
             entity.Property(e => e.NombreCompleto)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.Telefono)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.UrlImg).IsUnicode(false);
 
             entity.HasOne(d => d.IdRolUsuarioNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRolUsuario)

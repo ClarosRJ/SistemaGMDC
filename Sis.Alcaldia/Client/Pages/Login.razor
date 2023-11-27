@@ -49,7 +49,6 @@
     string myAlert { get; set; } = "d-none";
     bool disableButton { get; set; } = false;
 
-
     bool PasswordVisibility;
     InputType PasswordInput = InputType.Password;
     string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
@@ -79,13 +78,15 @@
         if (result.status)
         {
             SesionDTO sesionUsuario = new SesionDTO
-            {
-                Nombre = result.value!.NombreCompleto,
-                Correo = result.value!.Correo,
-                Rol = result.value!.IdRolUsuarioNavigation.Descripcion,
-            };
+                {
+                    Nombre = result.value!.NombreCompleto,
+                    Correo = result.value!.Correo,
+                    Rol = result.value!.IdRolUsuarioNavigation.Descripcion,
+                    Actor = result.value!.UrlImg
+                };
             var autenticacionExt = (AutenticacionExtension)autenticacionProvider;
             await autenticacionExt.ActualizarEstadoAutenticacion(sesionUsuario);
+
             _navigationManager.NavigateTo("/page/dashboard");
         }
        

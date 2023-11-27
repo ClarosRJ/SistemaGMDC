@@ -34,12 +34,29 @@
                     <HeaderContent>
                         <MudTh>Nombre completo</MudTh>
                         <MudTh>Correo</MudTh>
+                        <MudTh>Telefono</MudTh>
+                        <MudTh>Estado</MudTh>
                         <MudTh>Rol</MudTh>
                         <MudTh></MudTh>
                     </HeaderContent>
                     <RowTemplate Context="usuarioRow">
                         <MudTd DataLabel="Nombre Completo">@usuarioRow.NombreCompleto</MudTd>
                         <MudTd DataLabel="Correo">@usuarioRow.Correo</MudTd>
+                        <MudTd DataLabel="Telefono">@usuarioRow.Telefono</MudTd>
+                        <MudTd DataLabel="Estado">
+                            @if (usuarioRow.Estado != null)
+                            {
+                                if (usuarioRow.Estado.ToLower() == "activo")
+                                {
+                                    <span scope="col" class="colortext-activo">@usuarioRow.Estado</span>
+                                }
+                                else
+                                {
+                                    <span scope="col" class="colortext-inactivo">@usuarioRow.Estado</span>
+                                }
+                            }
+                        </MudTd>
+                        
                         <MudTd DataLabel="Rol">@usuarioRow.IdRolUsuarioNavigation!.Descripcion</MudTd>
                         <MudTd DataLabel="">
                             <MudFab Color="Color.Primary"

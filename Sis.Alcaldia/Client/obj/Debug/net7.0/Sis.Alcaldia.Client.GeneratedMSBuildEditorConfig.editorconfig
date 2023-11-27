@@ -104,6 +104,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGlzby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Profile/MdProfile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZVxNZFByb2ZpbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Profile/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZVxQcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Recepcion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZXBjaW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -114,10 +122,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Salida.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsaWRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Usuario.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/LoginLayout.razor]
@@ -147,6 +151,10 @@ build_metadata.AdditionalFiles.CssScope = b-lg1l1vgeer
 [C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Empleados/Empleados.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEVtcGxlYWRvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-ri0mf0hnrb
+
+[C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Pages/Usuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-qud0m47r4o
 
 [C:/Users/windo/Desktop/Cursos/Proyectos/SistemaAlcaldia/Sis.Alcaldia/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=

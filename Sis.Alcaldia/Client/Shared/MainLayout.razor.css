@@ -79,3 +79,9 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+
+.theme-manager-container {
+    float: right;
+    width: 100%;
+}
+

@@ -13,11 +13,17 @@
 
 
 .colortext-pagada[b-fywrzbrh6o] {
-    color: #00b636;
+    color: #fff;
+    background-color: #00b636;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
 }
 
 .colortext-pendiente[b-fywrzbrh6o] {
-    color: #a30000;
+    color: #fff;
+    background-color: #a30000;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
 }
 /* /Pages/Empleados/DetPagos.razor.rz.scp.css */
 .colorfont[b-lg1l1vgeer] {
@@ -59,16 +65,42 @@ p[b-lg1l1vgeer] {
 
 
 .colortext-prueba[b-ri0mf0hnrb] {
-    color: #ffd800;
+    color: #fff;
+    background-color: #ffd800;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
 }
 
 .colortext-activo[b-ri0mf0hnrb] {
-    color: #00b636;
+    color: #fff;
+    background-color: #00b636;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
 }
 
 .colortext-inactivo[b-ri0mf0hnrb] {
-    color: #a30000;
+    color: #fff;
+    background-color: #a30000;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
 }
+
+/* /Pages/Usuario.razor.rz.scp.css */
+
+.colortext-activo[b-qud0m47r4o] {
+    color: #fff;
+    background-color: #00b636;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
+}
+
+.colortext-inactivo[b-qud0m47r4o] {
+    color: #fff;
+    background-color: #a30000;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
+}
+
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-t5kf8a7lbe] {
     position: relative;
@@ -151,6 +183,12 @@ main[b-t5kf8a7lbe] {
         padding-right: 1.5rem !important;
     }
 }
+
+.theme-manager-container[b-t5kf8a7lbe] {
+    float: right;
+    width: 100%;
+}
+
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-2bs78ytdoh] {
     background-color: rgba(255, 255, 255, 0.1);

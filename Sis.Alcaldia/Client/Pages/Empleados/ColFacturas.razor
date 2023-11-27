@@ -195,7 +195,7 @@
     private async Task AbrirNuevoUsuario()
     {
         var parameters = new DialogParameters { ["IdCol"] = IdCol };
-        var dialogo = _dialogServicio.Show<MdColFactura>("Nuevo Colaborador", parameters);
+        var dialogo = _dialogServicio.Show<MdColFactura>("Nuevo Factura", parameters);
         var resultado = await dialogo.Result;
 
         if (!resultado.Canceled)

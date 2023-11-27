@@ -116,3 +116,4 @@ C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Server\obj\
 C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Server\obj\Debug\net7.0\Sis.Alcaldia.Server.pdb
 C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Server\obj\Debug\net7.0\Sis.Alcaldia.Server.genruntimeconfig.cache
 C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Server\obj\Debug\net7.0\ref\Sis.Alcaldia.Server.dll
+C:\Users\windo\Desktop\Cursos\Proyectos\SistemaAlcaldia\Sis.Alcaldia\Server\bin\Debug\net7.0\MudBlazor.ThemeManager.dll

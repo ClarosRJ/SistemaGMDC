@@ -25,6 +25,7 @@ namespace Sis.Alcaldia.Server.Repositorio.Implementacion
         {
             try
             {
+                entidad.UrlImg = "https://localhost:7127/images/271120231718_default.png";
                 _dbContext.Set<Usuario>().Add(entidad);
                 await _dbContext.SaveChangesAsync();
                 return entidad;
@@ -85,6 +86,13 @@ namespace Sis.Alcaldia.Server.Repositorio.Implementacion
             {
                 throw;
             }
+        }
+
+        public async Task<Usuario> TraerUser(string username, string correo)
+        {
+            var data = await _dbContext.Usuarios.Where(c => c.NombreCompleto == username && c.Correo == correo)
+                            .FirstOrDefaultAsync();
+            return data;
         }
     }
 }

@@ -1,13 +1,23 @@
 ﻿
 
 .colortext-prueba {
-    color: #ffd800;
+    color: #fff;
+    background-color: #ffd800;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
 }
 
 .colortext-activo {
-    color: #00b636;
+    color: #fff;
+    background-color: #00b636;
+    padding: 0.25rem 0.7rem;
+    border-radius: 0.25rem;
 }
 
 .colortext-inactivo {
-    color: #a30000;
+    color: #fff;
+    background-color: #a30000;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
 }
+

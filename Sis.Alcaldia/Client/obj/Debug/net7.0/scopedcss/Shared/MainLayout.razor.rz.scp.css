@@ -79,3 +79,9 @@ main[b-t5kf8a7lbe] {
         padding-right: 1.5rem !important;
     }
 }
+
+.theme-manager-container[b-t5kf8a7lbe] {
+    float: right;
+    width: 100%;
+}
+

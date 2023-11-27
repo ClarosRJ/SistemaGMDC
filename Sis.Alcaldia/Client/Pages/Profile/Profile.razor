@@ -1,0 +1,275 @@
+﻿
+@inject IRolUsuarioServicio _rolServicio
+@inject IUsuarioServicio _usuarioServicio
+@inject ISnackbar _snackBar
+@inject HttpClient HTTP;
+<MudDialog Style="max-width:60%; ">
+    <DialogContent>
+        <MudContainer Style="max-height: 600px;" Class="m-0 p-0">
+             <EditForm Model="@_usuario">
+                <MudItem xs="12">
+                    <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudItem xs="12" sm="6" Style="padding-left:15px; padding-right:15px;">
+                            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">
+                                <div class="d-flex flex-column align-items-center">
+                                    @if ((saveFile?.Files?.Count ?? 0) > 0)
+                                    {
+                                            @foreach (var item in saveFile?.Files)
+                                            {
+                                                <MudImage ObjectFit="@ImageFit" Height="150" Width="150" Src="@($"data:{item.FileType};base64,{Convert.ToBase64String(item.ImageBytes)}")" Alt="Örebro Slott" Elevation="25" Class="rounded-lg" />
+                                            }
+                                    }
+                                    else
+                                    {
+                                        if (_usuario.UrlImg == null)
+                                        {
+                                            <MudImage ObjectFit="@ImageFit" Height="150" Width="150" Src="images/271120231718_default.png" Alt="Örebro Slott" Elevation="25" Class="rounded-lg" />
+                                        }else
+                                        {
+                                           <MudImage ObjectFit="@ImageFit" Height="150" Width="150" Src="@_usuario.UrlImg" Alt="Örebro Slott" Elevation="25" Class="rounded-lg" />
+                                        }
+                                    }
+                                    <InputFile id="inputfile" OnChange="UploadFiles" hidden/>
+
+                                        <MudIconButton HtmlTag="label"
+                                                        Color="Color.Info"
+                                                        Icon="@Icons.Material.Filled.PhotoCamera"
+                                                        for="inputfile">
+                                        </MudIconButton>
+                                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveToServer">Actualizar Foto</MudButton>
+                                    <MudChipSet Filter="true" Mandatory="true" Class="mt-8">
+                                        <MudChip Text="Cover" OnClick="@(() => SetImageFit(ObjectFit.None))" SelectedColor="Color.Primary" Default="true" />
+                                        <MudChip Text="Cover" OnClick="@(() => SetImageFit(ObjectFit.Cover))" SelectedColor="Color.Primary" Default="true" />
+                                        <MudChip Text="Contain" OnClick="@(() => SetImageFit(ObjectFit.Contain))" SelectedColor="Color.Primary" />
+                                        <MudChip Text="Fill" OnClick="@(() => SetImageFit(ObjectFit.Fill))" SelectedColor="Color.Primary" />
+                                    </MudChipSet>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="12" sm="6" Style="padding-left:15px; padding-right:15px; width:430px;">
+                            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">
+                                <div class="d-flex align-end justify-space-between mud-width-full">
+                                    <div class="d-flex flex-column pl-8">
+                                        <MudTextField @bind-Value="@_usuario.NombreCompleto" T="string" Label="Nombre"  Variant="Variant.Text" />
+                                        <MudTextField @bind-Value="@_usuario.Correo" T="string" Label="Correo" Variant="Variant.Text" />
+                                        <MudTextField @bind-Value="@_usuario.Telefono" T="string" Label="Telefono" Variant="Variant.Text" />
+                                        <MudNumericField @bind-Value="@_usuario.IdRolUsuario" Label="Rol" Variant="Variant.Text" Disabled="true" />
+                                        <MudTextField @bind-Value="@_usuario.Clave" InputType="@PasswordInput" Adornment="Adornment.End"
+                                                      AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="MostrarClave"
+                                                      AdornmentAriaLabel="Mostrar Contraseña" T="string" Label="Clave" Variant="Variant.Text" />
+                                          <MudDatePicker 
+                                           Label="Fec.Inicio" PickerVariant="PickerVariant.Dialog" Disabled="true"
+                                           DateFormat="dd/MM/yyyy" @bind-Date="@_usuario.FechaCreacion" />
+                                    </div>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+             </EditForm>
+        </MudContainer>
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Guardar">Guardar</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+
+    [Parameter]
+    public UsuarioDTO _usuario { get; set; } = new UsuarioDTO();
+
+    List<RolUsuarioDTO> listaRoles = new List<RolUsuarioDTO>();
+    public RolUsuarioDTO rolSeleccionado;
+
+
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+    //imagen
+    ObjectFit ImageFit = ObjectFit.Cover;
+
+    private string resultimgapi = "";
+
+    private string nameimage = "";
+    private byte[] imgbytes;
+    private long? filesize;
+
+    void SetImageFit(ObjectFit value)
+    {
+        ImageFit = value;
+    }
+    //subir imagen
+    SaveFileDTO saveFile = new SaveFileDTO();
+    private async Task UploadFiles(InputFileChangeEventArgs e)
+    {
+        var imageninicio = _usuario.FileName;
+        var currentDateTime = DateTime.Now;
+        var formattedDateTime = DateTime.Now.ToString("ddMMyyyyHHmm");
+        foreach (var file in e.GetMultipleFiles())
+        {
+            var maxAllowedSize = 1024 * 1024 * 5; // 5 MB
+            var fileStream = file.OpenReadStream(maxAllowedSize, CancellationToken.None);
+
+            var fileData = new FileDataDTO();
+            var buffers = new byte[file.Size];
+            await fileStream.ReadAsync(buffers);
+            fileData.FileName = formattedDateTime + "_" + file.Name;
+            fileData.FileSize = file.Size;
+            fileData.FileType = file.ContentType;
+            fileData.ImageBytes = buffers;
+            fileData.ImagenInicio = imageninicio; 
+            saveFile.Files.Add(fileData);
+            nameimage = formattedDateTime + "_" + file.Name;
+            imgbytes = buffers;
+            filesize = file.Size;
+        }
+
+    }
+
+    private void RemoveImg(FileDataDTO file)
+    {
+        saveFile.Files.Remove(file);
+    }
+
+    public async Task SaveToServer()
+    {
+        if ((saveFile?.Files?.Count ?? 0) > 0)
+        {
+            string _mensaje = "";
+            try
+            {
+
+                var _resultado = await HTTP.PostAsJsonAsync("/api/usuario/SaveToPhysicalLocation", saveFile);
+                resultimgapi = "https://localhost:7127/images/" + nameimage;
+                if (_resultado.IsSuccessStatusCode)
+                {
+                    _mensaje = "Imagen Actualizada";
+                    _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+                }
+                else
+                {
+                    _snackBar.Add("Error al Cambiar Imagen", Severity.Error, a => a.VisibleStateDuration = 1000);
+                }
+            }
+            catch (Exception ex)
+            {
+                _mensaje = "Error al Guardar" + ex;
+                throw;
+            }
+        }
+    }
+
+    Atom element = new Atom { Name = "Hydrogen", Mass = 1.00794, Electrons = 1, Changed = DateTime.Today };
+
+    public class Atom
+    {
+        public string Name { get; set; }
+        public double Mass { get; set; }
+        public int Electrons { get; set; }
+        public DateTime Changed { get; set; }
+    }
+
+    private void Reset()
+    {
+        element = new Atom { Name = "Hydrogen", Mass = 1.00794, Electrons = 1, Changed = DateTime.Today };
+        StateHasChanged();
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ListaRol();
+    }
+    private async Task ListaRol()
+    {
+
+         var resultado = await _rolServicio.Lista();
+
+        if (resultado.status)
+        {
+            listaRoles = resultado.value!;
+
+            if (_usuario.IdUsuario != 0)
+                rolSeleccionado = listaRoles.FirstOrDefault(p => p.IdRolUsuario == _usuario.IdRolUsuario)!;
+            else
+                rolSeleccionado = listaRoles.First();
+
+        }
+    }
+
+    void MostrarClave()
+    {
+        @if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+    private async Task Guardar()
+    {
+        if (string.IsNullOrWhiteSpace(_usuario.NombreCompleto)|| string.IsNullOrWhiteSpace(_usuario.Correo)|| string.IsNullOrWhiteSpace(_usuario.Clave))
+            return;
+
+        _usuario.IdRolUsuario = rolSeleccionado.IdRolUsuario;
+
+        if (!string.IsNullOrWhiteSpace(resultimgapi) && !string.IsNullOrWhiteSpace(nameimage))
+        {
+            _usuario.UrlImg = resultimgapi;
+            _usuario.FileName = nameimage;
+            _usuario.ImgBin = imgbytes;
+            _usuario.FileSize = filesize;
+
+        }
+
+        string _mensaje = "";
+        bool _resultado;
+
+        if (_usuario.IdUsuario != 0)
+        {
+            try
+            {
+                _resultado = await _usuarioServicio.Editar(_usuario);
+                _mensaje = "Usuario fue modificado";
+                if (_resultado)
+                {
+                    _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+                    MudDialog.Close(DialogResult.Ok(true));
+                }
+                else
+                {
+                    _snackBar.Add("Error al Editar Perfil", Severity.Error, a => a.VisibleStateDuration = 1000);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //if (_resultado)
+        //{
+        //    _snackBar.Add(_mensaje, Severity.Success, a => a.VisibleStateDuration = 1000);
+        //    MudDialog.Close(DialogResult.Ok(true));
+        //}
+        //else
+        //    _snackBar.Add("Error al guardar cambios", Severity.Error, a => a.VisibleStateDuration = 1000);
+
+    }
+}

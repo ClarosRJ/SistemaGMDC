@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231718_default.png",
+      "PackagePath": "staticwebassets\\images\\271120231718_default.png"
+    },
+    {
+      "Id": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231833_jhonny2.png",
+      "PackagePath": "staticwebassets\\images\\271120231833_jhonny2.png"
+    },
+    {
+      "Id": "C:\\Users\\windo\\Desktop\\Cursos\\Proyectos\\SistemaAlcaldia\\Sis.Alcaldia\\Server\\wwwroot\\images\\271120231835_El Comarapeño.png",
+      "PackagePath": "staticwebassets\\images\\271120231835_El Comarapeño.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Sis.Alcaldia.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Sis.Alcaldia.Server.props",
+      "PackagePath": "build\\Sis.Alcaldia.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Sis.Alcaldia.Server.props",
+      "PackagePath": "buildMultiTargeting\\Sis.Alcaldia.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Sis.Alcaldia.Server.props",
+      "PackagePath": "buildTransitive\\Sis.Alcaldia.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

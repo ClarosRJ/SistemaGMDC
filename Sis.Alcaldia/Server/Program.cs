@@ -30,6 +30,16 @@ builder.Services.AddScoped<IRecepcionRepositorio, RecepcionRepositorio>();
 builder.Services.AddScoped<IDashBoardRepositorio, DashBoardRepositorio>();
 builder.Services.AddScoped<IConfigContabilidad, ConfigContabilidad>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyAllowSpecificOrigins",
+          builder =>
+          {
+              builder.AllowAnyOrigin();
+              builder.AllowAnyHeader();
+              builder.AllowAnyMethod();
+          });
+});
 
 var app = builder.Build();
 
@@ -44,6 +54,7 @@ else
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
+app.UseCors("MyAllowSpecificOrigins");
 
 app.UseHttpsRedirection();
 

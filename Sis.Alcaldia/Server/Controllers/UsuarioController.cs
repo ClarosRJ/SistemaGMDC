@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting.Internal;
 using Sis.Alcaldia.Server.Models;
 using Sis.Alcaldia.Server.Repositorio.Contratos;
+using Sis.Alcaldia.Shared.BaseModels;
 using Sis.Alcaldia.Shared.Models;
 
 namespace Sis.Alcaldia.Server.Controllers
@@ -14,10 +16,12 @@ namespace Sis.Alcaldia.Server.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, IMapper mapper)
+        private readonly IWebHostEnvironment _webHost;
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, IMapper mapper, IWebHostEnvironment webHost)
         {
             _mapper = mapper;
             _usuarioRepositorio = usuarioRepositorio;
+            _webHost = webHost;
         }
 
 
@@ -113,8 +117,17 @@ namespace Sis.Alcaldia.Server.Controllers
 
                     _usuarioParaEditar.NombreCompleto = _usuario.NombreCompleto;
                     _usuarioParaEditar.Correo = _usuario.Correo;
+                    _usuarioParaEditar.Telefono = _usuario.Telefono;
                     _usuarioParaEditar.IdRolUsuario = _usuario.IdRolUsuario;
                     _usuarioParaEditar.Clave = _usuario.Clave;
+                    _usuarioParaEditar.Estado = _usuario.Estado;
+                    _usuarioParaEditar.FileName = _usuario.FileName;
+                    _usuarioParaEditar.FileSize = _usuario.FileSize;
+                    _usuarioParaEditar.ImgBin = _usuario.ImgBin;
+                    _usuarioParaEditar.UrlImg = _usuario.UrlImg;
+                    
+                    
+                    
 
                     bool respuesta = await _usuarioRepositorio.Editar(_usuarioParaEditar);
 
@@ -166,6 +179,62 @@ namespace Sis.Alcaldia.Server.Controllers
                 _ResponseDTO = new ResponseDTO<string>() { status = false, msg = ex.Message };
                 return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
             }
+        }
+
+        [HttpGet("UserEmailName/{username}/{correo}")]
+        public async Task<IActionResult> UserEmailName(string username, string correo)
+        {
+            ResponseDTO<UsuarioDTO> _ResponseDTO = new ResponseDTO<UsuarioDTO>();
+            try
+            {
+                UsuarioDTO _usuario = new UsuarioDTO();
+                Usuario query = await _usuarioRepositorio.TraerUser(username, correo);
+
+                _usuario = _mapper.Map<UsuarioDTO>(query);
+
+                _ResponseDTO = new ResponseDTO<UsuarioDTO>() { status = true, msg = "ok", value = _usuario };
+                return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
+            }
+            catch (Exception ex)
+            {
+                _ResponseDTO = new ResponseDTO<UsuarioDTO>() { status = false, msg = ex.Message, value = null };
+                return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
+            }
+        }
+        //subir imagen
+        [HttpPost]
+        [Route("SaveToPhysicalLocation")]
+        public async Task<IActionResult> SaveToPhysicalLocation([FromBody] SaveFile saveFile)
+        {
+            string filePaths = "";
+            string filePathsdelete = "";
+            foreach (var file in saveFile.Files)
+            {
+                if (file.FileName != "271120231718_default.png")
+                {
+
+                    string uploadsFolders = Path.Combine(_webHost.WebRootPath, "images");
+                    var fileName = Path.GetFileName(file.FileName.ToString().Trim('"'));
+                    filePaths = Path.Combine(uploadsFolders, fileName);
+                    // Verifica si el archivo ya existe en la ruta
+                    if (file.ImagenInicio != "271120231718_default.png")
+                    {
+                        var filedelete = Path.GetFileName(file.ImagenInicio.ToString().Trim('"'));
+                        filePathsdelete = Path.Combine(uploadsFolders, filedelete);
+                        if (System.IO.File.Exists(filePathsdelete))
+                        {
+                            // Elimina el archivo existente
+                            System.IO.File.Delete(filePathsdelete);
+                        }
+                    }
+
+                    using (var fileStream = System.IO.File.Create(filePaths))
+                    {
+                        await fileStream.WriteAsync(file.ImageBytes);
+                    }
+                }
+            }
+            return Ok(filePaths);
         }
 
     }
