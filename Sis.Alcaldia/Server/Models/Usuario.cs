@@ -30,4 +30,8 @@ public partial class Usuario
     public DateTime? FechaCreacion { get; set; }
 
     public virtual RolUsuario? IdRolUsuarioNavigation { get; set; }
+
+    public virtual ICollection<Message> MessageFroms { get; set; } = new List<Message>();
+
+    public virtual ICollection<Message> MessageTos { get; set; } = new List<Message>();
 }

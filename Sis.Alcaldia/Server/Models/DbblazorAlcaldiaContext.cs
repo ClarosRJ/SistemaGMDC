@@ -27,6 +27,8 @@ public partial class DbblazorAlcaldiaContext : DbContext
 
     public virtual DbSet<Habitacion> Habitacions { get; set; }
 
+    public virtual DbSet<Message> Messages { get; set; }
+
     public virtual DbSet<Piso> Pisos { get; set; }
 
     public virtual DbSet<Recepcion> Recepcions { get; set; }
@@ -250,6 +252,23 @@ public partial class DbblazorAlcaldiaContext : DbContext
             entity.HasOne(d => d.IdPisoNavigation).WithMany(p => p.Habitacions)
                 .HasForeignKey(d => d.IdPiso)
                 .HasConstraintName("FK__Habitacio__IdPis__5070F446");
+        });
+
+        modelBuilder.Entity<Message>(entity =>
+        {
+            entity.ToTable("Message");
+
+            entity.HasIndex(e => e.FromId, "IX_Message_FromId");
+
+            entity.HasIndex(e => e.ToId, "IX_Message_ToId");
+
+            entity.HasOne(d => d.From).WithMany(p => p.MessageFroms)
+                .HasForeignKey(d => d.FromId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.To).WithMany(p => p.MessageTos)
+                .HasForeignKey(d => d.ToId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         modelBuilder.Entity<Piso>(entity =>
