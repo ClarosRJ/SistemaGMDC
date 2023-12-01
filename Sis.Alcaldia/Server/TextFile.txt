@@ -20,3 +20,10 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=DBBlazorAlcaldia;User Id
 
 //con plural
 dotnet ef dbcontext scaffold "Server=localhost;Database=DBBlazorAlcaldia;User Id=sa;Password=sistemas123;MultipleActiveResultSets=true;Trusted_Connection=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -d -f --no-pluralize --no-onconfiguring
+
+
+//subir cambios a git comandos
+git add .
+git commit -m "Version Commit"
+git status
+git push -u origin main
